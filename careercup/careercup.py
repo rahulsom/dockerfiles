@@ -98,7 +98,7 @@ def help():
     """))
 
 
-elif len(sys.argv) == 3 and sys.argv[1] == 'ignore':
+if len(sys.argv) == 3 and sys.argv[1] == 'ignore':
     ignore_question(sys.argv[2])
 elif len(sys.argv) == 3 and sys.argv[1] == 'fetch':
     fetch(10)
