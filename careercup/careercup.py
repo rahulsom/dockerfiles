@@ -23,7 +23,7 @@ def decorate(text, language):
         'sh': '#',
     }
     commentSymbol = commenting[language]
-    return commentSymbol + re.sub('\n', '\n' + commentSymbol, text)
+    return commentSymbol + re.sub('\n', '\n' + commentSymbol+ ' ', text)
 
 
 def fetch_question(question_number, extension):
