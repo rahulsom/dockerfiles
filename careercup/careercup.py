@@ -46,7 +46,10 @@ def fetch_page(pagenum, extension, max, ignored):
     for e in tree.cssselect('#question_preview li.question span.entry > a'):
         link = e.get("href")
         number = link.split('=')[1]
-        if os.path.isfile('q' + number + '.' + extension) or number in ignored:
+        isUnsolved = os.path.isfile('q' + number + '.' + extension)
+        isDone = os.path.isfile('done/q' + number + '.' + extension)
+        isIgnored = number in ignored
+        if isUnsolved or isDone or isIgnored:
             skipped += 1
         else:
             if fetch_question(number, extension):
@@ -73,6 +76,8 @@ def fetch(max):
         f = open('.ccignore', 'w')
         f.write('# Ignored questions from CareerCup\n')
         f.close()
+    if not os.path.isdir('done'):
+        os.mkdir('done')
     with open('.ccignore') as f:
         lines = f.read().splitlines()
     page = 1
