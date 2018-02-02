@@ -1,6 +1,7 @@
-FROM maven:3.5.2-jdk-8
+FROM maven:3-jdk-8-alpine
 MAINTAINER Rahul Somasunderam
 
+RUN apk update && apk add git
 WORKDIR /
 RUN git clone https://github.com/torquebox/rubygems-servlets
 
