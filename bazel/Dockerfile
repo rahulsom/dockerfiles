@@ -1,4 +1,4 @@
-FROM openjdk:8-alpine
+FROM frolvlad/alpine-oraclejdk8:cleaned
 MAINTAINER Rahul Somasunderam <rahul.som@gmail.com>
 
 RUN apk update && apk add git && apk add bash
