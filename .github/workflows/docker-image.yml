@@ -12,12 +12,32 @@ jobs:
 
     strategy:
       matrix:
-        image: [ "ack" ]
+        image:
+          - ack
+          - all-jdks
+          - bazel
+          - careercup
+          - groovy-graphviz-jenkins-slave
+          - logstash
+          - oracle-xe-11g
+          - pcat
+          - quincykit
+          - rubygems-servlets
+          - tfjava
+          - tika
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build ACK
-      working-directory: ${{matrix.image}}
-      run: docker build . --file Dockerfile --tag rahulsom/${{matrix.image}}:$(date +%s)
+      - uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Image
+        working-directory: ${{matrix.image}}
+        run: docker build . --file Dockerfile --tag rahulsom/${{matrix.image}}:$(date +%s)
