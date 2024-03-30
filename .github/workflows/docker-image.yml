@@ -10,9 +10,14 @@ jobs:
 
   build:
 
+    strategy:
+      matrix:
+        image: [ "ack" ]
+
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
     - name: Build ACK
-      run: docker build ack --file Dockerfile --tag rahulsom/ack:$(date +%s)
+      working-directory: ${{matrix.image}}
+      run: docker build . --file Dockerfile --tag rahulsom/${{matrix.image}}:$(date +%s)
