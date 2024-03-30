@@ -15,11 +15,9 @@ jobs:
         image:
           - ack
           - all-jdks
-          - bazel
           - careercup
           - groovy-graphviz-jenkins-slave
           - logstash
-          - oracle-xe-11g
           - pcat
           - quincykit
           - rubygems-servlets
