@@ -17,13 +17,10 @@ jobs:
           - ack
           - all-jdks
           - careercup
-          - groovy-graphviz-jenkins-slave
           - logstash
           - pcat
           - quincykit
           - rubygems-servlets
-          - tfjava
-          - tika
 
     runs-on: ubuntu-latest
 
