@@ -36,7 +36,10 @@ jobs:
 
       - name: Build Image
         working-directory: ${{matrix.image}}
-        run: docker build . --file Dockerfile --tag ghcr.io/rahulsom/${{matrix.image}}:$(date +%s)
+        run: |-
+          docker build . --file Dockerfile \
+              --tag ghcr.io/rahulsom/${{matrix.image}}:$(date +%s) \
+              --tag ghcr.io/rahulsom/${{matrix.image}}:latest
 
       - name: Push Image
         if: github.ref == 'refs/heads/main'
