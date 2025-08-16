@@ -19,7 +19,6 @@ jobs:
           - careercup
           - logstash
           - pcat
-          - quincykit
           - rubygems-servlets
 
     runs-on: ubuntu-latest
